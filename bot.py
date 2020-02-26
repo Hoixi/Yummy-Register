@@ -13,6 +13,7 @@ async def on_ready():
     message = await bot.send_message(channel, "React to me!")
     while True:
         reaction = await bot.wait_for_reaction(emoji="🏃", message=message)
-        
+        await bot.send_message(channel, "Çalıştı aq")
+
 
 bot.run(os.environ.get('token'))
