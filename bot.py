@@ -9,6 +9,7 @@ bot = commands.Bot(command_prefix=bot_prefix)
 
 @bot.event
 async def on_ready(user):
+    user = bot.get_server('672019759729999884')
     channel = bot.get_channel('682247713756020857')
     role = discord.utils.get(user.server.roles, name="Offical-Waifu-Hunt")
     message = await bot.send_message(channel, "React to me!")
