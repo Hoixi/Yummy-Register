@@ -12,7 +12,7 @@ async def on_ready():
     serverr = bot.get_server('672019759729999884')
     channel = bot.get_channel('682247713756020857')  
     message = await bot.send_message(channel, "React to me!")
-    role = discord.utils.get(serverr.roles, name="Offical-Waifu-Hunt")
+    role = discord.utils.get(serverr.roles, name="annen")
     while True:
         reaction = await bot.wait_for_reaction(emoji="🏃", message=message)
         await bot.add_roles(reaction.message.author, role)
