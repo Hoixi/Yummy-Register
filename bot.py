@@ -8,12 +8,12 @@ bot_prefix="!"
 bot = commands.Bot(command_prefix=bot_prefix)
 
 @bot.event
-async def on_ready():
-    channel = bot.get_channel('682247713756020857')
+async def on_ready(user):
+    channel = bot.get_channel('682247713756020857')  
     message = await bot.send_message(channel, "React to me!")
+    role = discord.utils.get(user.server.roles, name="Offical-Waifu-Hunt")
     while True:
-        reaction = await bot.wait_for_reaction(emoji="🏃", message=message)
-        await bot.send_message(channel, "Çalıştı aq")
-
+        reaction = await bot.wait_for_reaction(emoji=":heart:", message=message)
+        await bot.add_roles(reaction.message.author, role)
 
 bot.run(os.environ.get('token'))
