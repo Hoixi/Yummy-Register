@@ -14,7 +14,7 @@ async def on_ready():
     message = await bot.send_message(channel, "React to me!")
     role = discord.utils.get(serverr.roles, name="Offical-Waifu-Hunt")
     while True:
-        reaction = await bot.wait_for_reaction(emoji=":heart:", message=message)
+        reaction = await bot.wait_for_reaction(emoji="🏃", message=message)
         await bot.add_roles(reaction.message.author, role)
 
 bot.run(os.environ.get('token'))
