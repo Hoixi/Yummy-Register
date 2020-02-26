@@ -15,6 +15,7 @@ async def on_ready():
     role = discord.utils.get(serverr.roles, name="annen")
     while True:
         reaction = await bot.wait_for_reaction(emoji="🏃", message=message)
+        await bot.send_message(channel, "Kayıdınız Tamamlandı!")
         await bot.add_roles(reaction.message.author, role)
 
 bot.run(os.environ.get('token'))
