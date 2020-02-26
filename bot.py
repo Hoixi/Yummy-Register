@@ -11,7 +11,7 @@ bot = commands.Bot(command_prefix=bot_prefix)
 async def on_ready():
     serverr = bot.get_server('672019759729999884')
     channel = bot.get_channel('682247713756020857')  
-    message = await bot.send_message(channel, "React to me!")
+    message = await bot.send_message(channel, "Kuralları okuyup kabul ettiyseniz lütfen aşağıda ki onay simgesine tıklayınız.")
     role = discord.utils.get(serverr.roles, name="annen")
     while True:
         reaction = await bot.wait_for_reaction(emoji="🏃", message=message)
