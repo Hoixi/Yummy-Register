@@ -9,13 +9,13 @@ bot = commands.Bot(command_prefix=bot_prefix)
 
 @bot.event
 async def on_ready():
-    serverr = bot.get_server('672019759729999884')
+    yummy = discord.utils.find(lambda g : g.id == '672019759729999884' , bot.servers)
     channel = bot.get_channel('682247713756020857')  
-    message = await bot.send_message(channel, "Kuralları okuyup kabul ettiyseniz lütfen aşağıda ki onay simgesine tıklayınız.")    
-    role = discord.utils.get(channel.server.roles, name="annen")
+    messagee = await bot.send_message(channel, "Kuralları okuyup kabul ettiyseniz lütfen aşağıda ki onay simgesine tıklayınız.")    
+    role = discord.utils.get(yummy.roles, name="annen")
     while True:
         reaction = await bot.wait_for_reaction(emoji="🏃", message=message)
         await bot.send_message(channel, "Kayıdınız Tamamlandı!")       
-        await bot.add_roles(reaction.message.author, role)
+        await reaction.message.author.add_roles(role)
 
 bot.run(os.environ.get('token'))
