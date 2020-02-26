@@ -10,7 +10,7 @@ bot = commands.Bot(command_prefix=bot_prefix)
 @bot.event
 async def on_ready():
     channel = bot.get_channel('682247713756020857')
-    role = discord.utils.get(user.server.roles, name="Offical-Waifu-Hunt")
+    role = discord.utils.get(member.server.roles, name="Offical-Waifu-Hunt")
     message = await bot.send_message(channel, "React to me!")
     while True:
         reaction = await bot.wait_for_reaction(emoji="🏃", message=message)
