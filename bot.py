@@ -10,10 +10,8 @@ bot = commands.Bot(command_prefix=bot_prefix)
 @bot.event
 async def on_reaction_add(reaction,user):
     channel = reaction.message.channel
-
-    if (channel == "682247713756020857"):
-        yummy = discord.utils.find(lambda g : g.id == '672019759729999884' , bot.servers)
-        role = discord.utils.get(yummy.roles, name="annen")
-        await bot.add_roles(user.author, role)
+    yummy = discord.utils.find(lambda g : g.id == '672019759729999884' , bot.servers)
+    role = discord.utils.get(yummy.roles, name="annen")
+    await bot.add_roles(user.author, role)
 
 bot.run(os.environ.get('token'))
