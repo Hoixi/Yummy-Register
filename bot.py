@@ -6,6 +6,12 @@ import os
 client = discord.Client()
 
 @client.event
+async def on_ready():
+    game = discord.Game("Kendi Haremi ile")
+    await client.change_presence(status=discord.Status.idle, activity=game)
+
+
+@client.event
 async def on_raw_reaction_add(peyload):
     message_id = peyload.message_id
     if message_id == 682696747126227110:
