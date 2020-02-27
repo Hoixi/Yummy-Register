@@ -1,22 +1,41 @@
 import discord
-from discord.ext.commands import Bot
 from discord.ext import commands
-import os
 
-bot = discord.Client()
-bot_prefix="!"
-bot = commands.Bot(command_prefix=bot_prefix)
 
-@bot.event
-async def on_reaction_add(reaction,user,server):
-    channel = reaction.message.channel
-    role = discord.utils.get(server.roles, name="annen")
-    await bot.add_roles(user.author, role)
-    await bot.send_message(channel , "Vay aq")
+
+client = discord.Client()
+
+@client.event
+async def on_raw_reaction_add(peyload):
+    message_id = peyload.message_id
+    if message_id == 682667145787867393:
+        guild_id = peyload.guild_id
+        guild = discord.utils.find(lambda g : g.id == guild_id, client.guilds)
+        role = discord.utils.get(guild.roles, name='annen')
+        if role is not None:
+            member = discord.utils.find(lambda m : m.id == peyload.user_id, guild.members)
+            if member is not None:
+                await member.add_roles(role)
+            else:
+                print("Kullanıcı Yok")
+        else:
+            print("Rol Yok")        
+
+@client.event
+async def on_raw_reaction_remove(peyload):
+    message_id = peyload.message_id
+    if message_id == 682667145787867393:
+        guild_id = peyload.guild_id
+        guild = discord.utils.find(lambda g : g.id == guild_id, client.guilds)
+        role = discord.utils.get(guild.roles, name='annen')
+        if role is not None:
+            member = discord.utils.find(lambda m : m.id == peyload.user_id, guild.members)
+            if member is not None:
+                await member.remove_roles(role)
+            else:
+                print("Kullanıcı Yok")
+        else:
+            print("Rol Yok")
     
-@bot.command(pass_context=True)
-async def yum(ctx):
-    await bot.add_role(ctx.message.author , discord.Role = "annen")
-    
 
-bot.run(os.environ.get('token'))
+client.run(os.environ.get('token'))
