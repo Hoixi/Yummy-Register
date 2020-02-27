@@ -12,5 +12,6 @@ async def on_reaction_add(reaction,user,server):
     channel = reaction.message.channel
     role = discord.utils.get(server.roles, name="annen")
     await bot.add_roles(user.author, role)
+    await bot.send_message(channel , "Vay aq")
 
 bot.run(os.environ.get('token'))
