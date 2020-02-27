@@ -16,8 +16,7 @@ async def on_reaction_add(reaction,user,server):
     
 @bot.command(pass_context=True)
 async def yum(ctx):
-    role = discord.utils.get(ctx.server.roles, name="annen")
-    await bot.add_role(ctx.author , role)
+    await bot.add_role(ctx.message.author , discord.Role = "annen")
     
 
 bot.run(os.environ.get('token'))
