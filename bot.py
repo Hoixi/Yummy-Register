@@ -6,6 +6,8 @@ import youtube_dl
 
 
 client = discord.Client()
+bot_prefix="y!"
+client = commands.Bot(command_prefix=bot_prefix)
 
 @client.event
 async def on_ready():
